@@ -30,6 +30,7 @@
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
+            font-size: 16px; /* Base font size for better readability */
         }
         
         .container {
@@ -52,6 +53,7 @@
             box-shadow: var(--shadow);
             text-decoration: none;
             text-align: center;
+            width: auto;
         }
         
         .btn:hover {
@@ -71,7 +73,7 @@
         header {
             background: linear-gradient(135deg, rgba(46, 49, 146, 0.9), rgba(142, 68, 173, 0.9));
             color: white;
-            padding: 1.5rem 0;
+            padding: 1.2rem 0;
             position: fixed;
             width: 100%;
             top: 0;
@@ -87,7 +89,7 @@
         }
         
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -104,7 +106,7 @@
         }
         
         nav ul li {
-            margin-left: 2rem;
+            margin-left: 1.5rem;
         }
         
         nav ul li a {
@@ -113,6 +115,7 @@
             font-weight: 500;
             transition: var(--transition);
             position: relative;
+            font-size: 1rem;
         }
         
         nav ul li a:hover {
@@ -138,11 +141,14 @@
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
         }
         
         /* Hero Section */
         .hero {
-            padding: 180px 0 100px;
+            padding: 160px 0 80px;
             background: linear-gradient(135deg, rgba(142, 68, 173, 0.1), rgba(52, 152, 219, 0.1));
             position: relative;
             overflow: hidden;
@@ -180,7 +186,7 @@
         }
         
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             margin-bottom: 1.5rem;
             line-height: 1.2;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -189,7 +195,7 @@
         }
         
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 2rem;
             color: var(--dark);
         }
@@ -197,6 +203,7 @@
         .hero-btns {
             display: flex;
             gap: 15px;
+            flex-wrap: wrap;
         }
         
         .floating-shapes {
@@ -245,7 +252,7 @@
         
         /* Products Section */
         .products {
-            padding: 100px 0;
+            padding: 80px 0;
             background: white;
         }
         
@@ -256,7 +263,7 @@
         }
         
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--dark);
             display: inline-block;
             position: relative;
@@ -328,7 +335,7 @@
         }
         
         .product-title {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 10px;
             color: var(--dark);
         }
@@ -356,24 +363,8 @@
             font-size: 0.9rem;
         }
         
-        .price-container {
-            display: none;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px dashed #ddd;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        .product-price {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 15px;
-        }
-        
         /* Payment Modal */
-        .modal {
-            display: none;
+        .modal-backdrop {
             position: fixed;
             top: 0;
             left: 0;
@@ -381,20 +372,71 @@
             height: 100%;
             background: rgba(0,0,0,0.7);
             z-index: 2000;
+            display: none;
             align-items: center;
             justify-content: center;
-            animation: fadeIn 0.3s ease;
+            padding: 20px;
+            overflow-y: auto;
         }
         
-        .modal-content {
+        .payment-modal {
+            width: 100%;
+            max-width: 520px;
             background: white;
-            border-radius: 15px;
-            padding: 30px;
-            max-width: 500px;
-            width: 90%;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-            position: relative;
-            animation: slideUp 0.5s ease;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+            font-size: 16px;
+            margin: auto;
+        }
+        
+        .payment-modal .row {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        
+        .input {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.08);
+            width: 100%;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .pay-btn {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            justify-content: center;
+            padding: 14px;
+            border-radius: 10px;
+            background: var(--success);
+            color: #fff;
+            font-weight: 700;
+            border: 0;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
         }
         
         .close-modal {
@@ -405,6 +447,8 @@
             cursor: pointer;
             color: #999;
             transition: var(--transition);
+            background: none;
+            border: none;
         }
         
         .close-modal:hover {
@@ -412,81 +456,9 @@
             transform: rotate(90deg);
         }
         
-        .payment-methods {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .payment-method {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            transition: var(--transition);
-            position: relative;
-        }
-        
-        .payment-method:hover {
-            background: #e9ecef;
-            transform: translateY(-5px);
-        }
-        
-        .payment-method h3 {
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-        
-        .payment-number {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-            cursor: pointer;
-            padding: 8px 12px;
-            border-radius: 5px;
-            background: white;
-            display: inline-block;
-            transition: var(--transition);
-            border: 1px solid #ddd;
-        }
-        
-        .payment-number:hover {
-            background: #f0f0f0;
-        }
-        
-        .copy-notification {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background: var(--success);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            opacity: 0;
-            transition: var(--transition);
-            pointer-events: none;
-        }
-        
-        .copy-notification.show {
-            opacity: 1;
-            transform: translateY(-5px);
-        }
-        
-        .whatsapp-instruction {
-            background: var(--success);
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            font-weight: 600;
-            margin-top: 20px;
-        }
-        
         /* Testimonials */
         .testimonials {
-            padding: 100px 0;
+            padding: 80px 0;
             background: linear-gradient(135deg, rgba(142, 68, 173, 0.05), rgba(52, 152, 219, 0.05));
         }
         
@@ -553,7 +525,7 @@
         
         /* FAQ */
         .faq {
-            padding: 100px 0;
+            padding: 80px 0;
             background: white;
         }
         
@@ -679,6 +651,12 @@
             font-size: 0.9rem;
         }
         
+        /* Small text utility */
+        .small {
+            font-size: 14px;
+            color: #666;
+        }
+        
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -686,33 +664,33 @@
         }
         
         @keyframes fadeInLeft {
-            from { 
+            from {  
                 opacity: 0;
                 transform: translateX(-50px);
             }
-            to { 
+            to {  
                 opacity: 1;
                 transform: translateX(0);
             }
         }
         
         @keyframes fadeInRight {
-            from { 
+            from {  
                 opacity: 0;
                 transform: translateX(50px);
             }
-            to { 
+            to {  
                 opacity: 1;
                 transform: translateX(0);
             }
         }
         
         @keyframes slideUp {
-            from { 
+            from {  
                 opacity: 0;
                 transform: translateY(50px);
             }
-            to { 
+            to {  
                 opacity: 1;
                 transform: translateY(0);
             }
@@ -724,7 +702,9 @@
             100% { transform: translateY(0) rotate(360deg); }
         }
         
-        /* Responsive */
+        /* ========== RESPONSIVE DESIGN ========== */
+        
+        /* Tablets and smaller desktops */
         @media (max-width: 992px) {
             .hero-content {
                 flex-direction: column;
@@ -732,39 +712,93 @@
             }
             
             .hero h1 {
-                font-size: 2.8rem;
+                font-size: 2.2rem;
             }
             
             .hero-btns {
                 justify-content: center;
             }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
         }
         
+        /* Tablets and large phones */
         @media (max-width: 768px) {
             nav ul {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, rgba(46, 49, 146, 0.95), rgba(142, 68, 173, 0.95));
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                text-align: center;
+                padding: 12px 0;
             }
             
             .mobile-menu {
                 display: block;
             }
             
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
             .hero {
-                padding: 150px 0 80px;
+                padding: 140px 0 60px;
             }
             
             .hero h1 {
                 font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Mobile phones */
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero {
+                padding: 130px 0 50px;
+            }
+            
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
             }
             
             .hero-btns {
@@ -774,6 +808,71 @@
             .btn {
                 width: 100%;
                 margin-bottom: 10px;
+                padding: 12px 24px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .product-card {
+                margin-bottom: 20px;
+            }
+            
+            .product-content {
+                padding: 20px;
+            }
+            
+            .payment-modal {
+                padding: 20px;
+            }
+            
+            .testimonial-card {
+                padding: 20px;
+            }
+            
+            .faq-question, .faq-answer.active {
+                padding: 15px;
+            }
+            
+            footer {
+                padding: 40px 0 20px;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+        }
+        
+        /* Very small phones */
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.4rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.4rem;
+            }
+            
+            .product-title {
+                font-size: 1.2rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Orientation fixes */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero {
+                padding: 120px 0 40px;
+            }
+            
+            .modal-backdrop {
+                align-items: flex-start;
+                padding-top: 40px;
             }
         }
     </style>
@@ -788,16 +887,16 @@
                     Saúde Natural
                 </div>
                 <nav>
-                    <ul>
+                    <ul id="navMenu">
                         <li><a href="#home">Início</a></li>
                         <li><a href="#products">Produtos</a></li>
                         <li><a href="#testimonials">Depoimentos</a></li>
                         <li><a href="#faq">FAQ</a></li>
                     </ul>
                 </nav>
-                <div class="mobile-menu">
+                <button class="mobile-menu" id="mobileMenuToggle">
                     <i class="fas fa-bars"></i>
-                </div>
+                </button>
             </div>
         </div>
     </header>
@@ -823,13 +922,14 @@
                     <div class="product-card" style="max-width: 300px; margin: 0 auto;">
                         <div class="product-image">
                             <div style="width:100%; height:100%; background:linear-gradient(135deg, #8e44ad, #3498db); display:flex; align-items:center; justify-content:center; color:white; font-weight:bold; text-align:center; padding:20px;">
-                                <img src="/capa_w.png" alt="">
+                                <!-- <span>E-book Dores nas Costas</span> -->
+                                 <img src="/capa_w.png" alt="">
                             </div>
                         </div>
                         <div class="product-content">
                             <h3 class="product-title">Dores nas Costas e Pescoço</h3>
                             <p class="product-description">E-book + App com receitas e exercícios simples para eliminar dores de forma natural.</p>
-                            <button class="btn btn-success ver-preco" data-product="dores-costas">Ver Preço e Comprar</button>
+                            <button class="btn btn-success open-payment-modal" data-product="dores-costas" data-price="1000">Ver Preço e Comprar</button>
                         </div>
                     </div>
                 </div>
@@ -851,7 +951,7 @@
                     <div class="product-badge">Mais Vendido</div>
                     <div class="product-image">
                         <div style="width:100%; height:100%; background:linear-gradient(135deg, #8e44ad, #3498db); display:flex; align-items:center; justify-content:center; color:white; font-weight:bold; text-align:center; padding:20px;">
-                            <!-- Alívio Natural das Dores nas Costas e Pescoço -->
+                            <!-- <span>Alívio Natural das Dores</span> -->
                              <img src="/capa_w.png" alt="">
                         </div>
                     </div>
@@ -864,12 +964,7 @@
                             <li><i class="fas fa-check"></i> Dicas de postura e prevenção</li>
                             <li><i class="fas fa-check"></i> Acesso ao aplicativo complementar</li>
                         </ul>
-                        <button class="btn ver-preco" data-product="dores-costas">Ver Preço e Comprar</button>
-                        <div class="price-container" id="price-dores-costas">
-                            <div class="product-price">1000 MTs</div>
-                            <p>Clique no botão abaixo para ver as informações de pagamento</p>
-                            <button class="btn btn-success ver-pagamento" data-product="dores-costas">Ver Informações de Pagamento</button>
-                        </div>
+                        <button class="btn open-payment-modal" data-product="dores-costas" data-price="1000">Ver Preço e Comprar</button>
                     </div>
                 </div>
                 
@@ -877,7 +972,8 @@
                 <div class="product-card">
                     <div class="product-image">
                         <div style="width:100%; height:100%; background:linear-gradient(135deg, #e74c3c, #e67e22); display:flex; align-items:center; justify-content:center; color:white; font-weight:bold; text-align:center; padding:20px;">
-                            <img src="/ciclo_mestrual.jpeg" alt="">
+                            <!-- <span>Ciclo Menstrual</span> -->
+                             <img src="/ciclo_mestrual.jpeg" alt="">
                         </div>
                     </div>
                     <div class="product-content">
@@ -889,12 +985,7 @@
                             <li><i class="fas fa-check"></i> Exercícios para alívio das cólicas</li>
                             <li><i class="fas fa-check"></i> Dicas para acompanhar seu ciclo</li>
                         </ul>
-                        <button class="btn ver-preco" data-product="ciclo-menstrual">Ver Preço e Comprar</button>
-                        <div class="price-container" id="price-ciclo-menstrual">
-                            <div class="product-price">150 MTs</div>
-                            <p>Clique no botão abaixo para ver as informações de pagamento</p>
-                            <button class="btn btn-success ver-pagamento" data-product="ciclo-menstrual">Ver Informações de Pagamento</button>
-                        </div>
+                        <button class="btn open-payment-modal" data-product="ciclo-menstrual" data-price="150">Ver Preço e Comprar</button>
                     </div>
                 </div>
                 
@@ -902,7 +993,8 @@
                 <div class="product-card">
                     <div class="product-image">
                         <div style="width:100%; height:100%; background:linear-gradient(135deg, #2ecc71, #27ae60); display:flex; align-items:center; justify-content:center; color:white; font-weight:bold; text-align:center; padding:20px;">
-                            <img src="/mau_cheiro.jpeg" alt="">
+                            <!-- <span>Mau Cheiro</span> -->
+                             <img src="/mau_cheiro.jpeg" alt="">
                         </div>
                     </div>
                     <div class="product-content">
@@ -914,12 +1006,7 @@
                             <li><i class="fas fa-check"></i> Alimentos que ajudam no equilíbrio da flora vaginal</li>
                             <li><i class="fas fa-check"></i> Prevenção de problemas recorrentes</li>
                         </ul>
-                        <button class="btn ver-preco" data-product="mau-cheiro">Ver Preço e Comprar</button>
-                        <div class="price-container" id="price-mau-cheiro">
-                            <div class="product-price">299 MTs</div>
-                            <p>Clique no botão abaixo para ver as informações de pagamento</p>
-                            <button class="btn btn-success ver-pagamento" data-product="mau-cheiro">Ver Informações de Pagamento</button>
-                        </div>
+                        <button class="btn open-payment-modal" data-product="mau-cheiro" data-price="299">Ver Preço e Comprar</button>
                     </div>
                 </div>
                 
@@ -927,7 +1014,8 @@
                 <div class="product-card">
                     <div class="product-image">
                         <div style="width:100%; height:100%; background:linear-gradient(135deg, #3498db, #2980b9); display:flex; align-items:center; justify-content:center; color:white; font-weight:bold; text-align:center; padding:20px;">
-                           <img src="/corrimento.jpeg" alt="">
+                            <!-- <span>Corrimento</span> -->
+                             <img src="/corrimento.jpeg" alt="">
                         </div>
                     </div>
                     <div class="product-content">
@@ -939,12 +1027,7 @@
                             <li><i class="fas fa-check"></i> Dicas complementares para prevenção</li>
                             <li><i class="fas fa-check"></i> Alimentos que fortalecem o sistema imunológico</li>
                         </ul>
-                        <button class="btn ver-preco" data-product="corrimento">Ver Preço e Comprar</button>
-                        <div class="price-container" id="price-corrimento">
-                            <div class="product-price">197 MTs</div>
-                            <p>Clique no botão abaixo para ver as informações de pagamento</p>
-                            <button class="btn btn-success ver-pagamento" data-product="corrimento">Ver Informações de Pagamento</button>
-                        </div>
+                        <button class="btn open-payment-modal" data-product="corrimento" data-price="197">Ver Preço e Comprar</button>
                     </div>
                 </div>
                 
@@ -953,7 +1036,8 @@
                     <div class="product-badge">Novo</div>
                     <div class="product-image">
                         <div style="width:100%; height:100%; background:linear-gradient(135deg, #9b59b6, #8e44ad); display:flex; align-items:center; justify-content:center; color:white; font-weight:bold; text-align:center; padding:20px;">
-                            <img src="/precoce.jpeg" alt="">
+                            <!-- <span>Ejaculação Precoce</span> -->
+                             <img src="/precoce.jpeg" alt="">
                         </div>
                     </div>
                     <div class="product-content">
@@ -965,12 +1049,7 @@
                             <li><i class="fas fa-check"></i> Dosagens e frequência de consumo</li>
                             <li><i class="fas fa-check"></i> Combinações potentes para resultados rápidos</li>
                         </ul>
-                        <button class="btn ver-preco" data-product="guia-chas">Ver Preço e Comprar</button>
-                        <div class="price-container" id="price-guia-chas">
-                            <div class="product-price">399 MTs</div>
-                            <p>Clique no botão abaixo para ver as informações de pagamento</p>
-                            <button class="btn btn-success ver-pagamento" data-product="guia-chas">Ver Informações de Pagamento</button>
-                        </div>
+                        <button class="btn open-payment-modal" data-product="guia-chas" data-price="399">Ver Preço e Comprar</button>
                     </div>
                 </div>
             </div>
@@ -1121,161 +1200,255 @@
     </footer>
 
     <!-- Payment Modal -->
-    <div class="modal" id="paymentModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Informações de Pagamento</h2>
-            <p>Para adquirir o e-book <span id="productName"></span>, faça o pagamento através de uma das opções abaixo:</p>
-            
-            <div class="payment-methods">
-                <div class="payment-method">
-                    <h3>💳 MPESA</h3>
-                    <div class="payment-number" data-number="857101056">85 710 1056</div>
-                    <p>Exarque Mambo</p>
-                    <div class="copy-notification">Copiado!</div>
+    <div class="modal-backdrop" id="paymentModalBackdrop">
+        <div class="payment-modal">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+                <div>
+                    <div style="font-weight:800; font-size: 20px;">Comprar — <span id="modalProductName"></span></div>
+                    <div class="small" id="modalProductPrice"></div>
                 </div>
-                
-                <div class="payment-method">
-                    <h3>💳 E-MOLA</h3>
-                    <div class="payment-number" data-number="860655527">86 065 5527</div>
-                    <p>Rita Rosa</p>
-                    <div class="copy-notification">Copiado!</div>
+                <button class="close-modal" id="closePaymentModal" aria-label="Fechar">✕</button>
+            </div>
+
+            <div class="row">
+                <div style="flex:1">
+                    <label class="small">Nome completo</label>
+                    <input class="input" id="buyerName" placeholder="Seu nome completo" />
+                </div>
+                <div style="width:100%; margin-top: 12px;">
+                    <label class="small">Telefone (WhatsApp)</label>
+                    <input class="input" id="buyerPhone" placeholder="+2588xxxxxxxx" />
                 </div>
             </div>
-            
-            <div class="whatsapp-instruction">
-                📤 Após o pagamento, envie o comprovativo no WhatsApp para validar a sua compra
+
+            <div style="margin-top:16px">
+                <div class="small">Escolha o método de pagamento:</div>
+                <div style="display:flex;gap:12px;margin-top:12px; flex-wrap: wrap;">
+                    <button class="btn-outline" id="chooseMpesa">MPESA</button>
+                    <button class="btn-outline" id="chooseEmola">E-MOLA</button>
+                </div>
+            </div>
+
+            <div id="paymentInstructions" style="margin-top:16px;display:none">
+                <div class="small" style="margin-bottom:12px">Instruções:</div>
+                <div id="paymentText" class="small" style="background:rgba(0,0,0,0.03);padding:12px;border-radius:8px"></div>
+
+                <label class="small" style="display:block;margin-top:16px">Depois de pagar, envie o comprovativo de pagamento (foto ou screenshot) aqui no WhatsApp ou clique no botão abaixo para enviar via WhatsApp.</label>
+                <div style="margin-top:14px;display:flex;gap:10px;flex-wrap: wrap;">
+                    <button class="pay-btn" id="sendWa" style="background:#25D366">Enviar comprovativo no WhatsApp</button>
+                    <button class="btn-outline" id="doneBtn">Já paguei (enviar comprovativo depois)</button>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            const nav = document.querySelector('nav ul');
-            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-        });
+        // ---------- Configurações ----------
+        const WHATSAPP_PHONE = '+258857101056';
+        const MPESA_NUMBER = '857101056';
+        const EMOLA_NUMBER = '860655527';
         
-        // Show Price on Button Click
-        document.querySelectorAll('.ver-preco').forEach(button => {
-            button.addEventListener('click', function() {
-                const product = this.getAttribute('data-product');
-                const priceContainer = document.getElementById(`price-${product}`);
-                
-                // Hide all price containers first
-                document.querySelectorAll('.price-container').forEach(container => {
-                    container.style.display = 'none';
-                });
-                
-                // Show the selected price container
-                priceContainer.style.display = 'block';
-                
-                // Scroll to the price container
-                priceContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            });
-        });
-        
-        // Show Payment Modal
-        document.querySelectorAll('.ver-pagamento').forEach(button => {
-            button.addEventListener('click', function() {
-                const product = this.getAttribute('data-product');
-                const productNames = {
-                    'dores-costas': 'Alívio Natural das Dores nas Costas e Pescoço',
-                    'ciclo-menstrual': 'Guia Completo para Regular o Ciclo Menstrual',
-                    'mau-cheiro': '5 Receitas Naturais para Eliminar Mau Cheiro',
-                    'corrimento': 'A Receita do Chá para o Corrimento',
-                    'guia-chas': 'O Guia dos Chás'
-                };
-                
-                document.getElementById('productName').textContent = productNames[product];
-                document.getElementById('paymentModal').style.display = 'flex';
-            });
-        });
-        
-        // Close Modal
-        document.querySelector('.close-modal').addEventListener('click', function() {
-            document.getElementById('paymentModal').style.display = 'none';
-        });
-        
-        // Close modal when clicking outside
-        window.addEventListener('click', function(event) {
-            if (event.target === document.getElementById('paymentModal')) {
-                document.getElementById('paymentModal').style.display = 'none';
+        // Produtos e preços
+        const products = {
+            'dores-costas': {
+                name: 'Alívio Natural das Dores nas Costas e Pescoço',
+                price: '1000'
+            },
+            'ciclo-menstrual': {
+                name: 'Guia Completo para Regular o Ciclo Menstrual',
+                price: '150'
+            },
+            'mau-cheiro': {
+                name: '5 Receitas Naturais para Eliminar Mau Cheiro',
+                price: '299'
+            },
+            'corrimento': {
+                name: 'A Receita do Chá para o Corrimento',
+                price: '197'
+            },
+            'guia-chas': {
+                name: 'O Guia dos Chás para Ejaculação Precoce',
+                price: '399'
             }
+        };
+
+        // Elementos do DOM
+        const modalBackdrop = document.getElementById('paymentModalBackdrop');
+        const closePaymentModal = document.getElementById('closePaymentModal');
+        const chooseMpesa = document.getElementById('chooseMpesa');
+        const chooseEmola = document.getElementById('chooseEmola');
+        const paymentInstructions = document.getElementById('paymentInstructions');
+        const paymentText = document.getElementById('paymentText');
+        const sendWa = document.getElementById('sendWa');
+        const doneBtn = document.getElementById('doneBtn');
+        const buyerName = document.getElementById('buyerName');
+        const buyerPhone = document.getElementById('buyerPhone');
+        const modalProductName = document.getElementById('modalProductName');
+        const modalProductPrice = document.getElementById('modalProductPrice');
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        // Variável para armazenar o produto atual
+        let currentProduct = null;
+
+        // Mobile menu toggle
+        mobileMenuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
         });
-        
-        // FAQ Toggle
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', function() {
-                const answer = this.nextElementSibling;
-                const toggle = this.querySelector('.faq-toggle');
-                
-                // Close all other answers
-                document.querySelectorAll('.faq-answer').forEach(item => {
-                    if (item !== answer) {
-                        item.classList.remove('active');
-                        item.previousElementSibling.querySelector('.faq-toggle').classList.remove('rotate');
-                    }
-                });
-                
-                // Toggle current answer
-                answer.classList.toggle('active');
-                toggle.classList.toggle('rotate');
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
             });
         });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
+
+        // Abrir modal de pagamento
+        document.querySelectorAll('.open-payment-modal').forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-product');
+                const productPrice = this.getAttribute('data-price');
                 
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
+                currentProduct = productId;
                 
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (window.innerWidth <= 768) {
-                        document.querySelector('nav ul').style.display = 'none';
-                    }
+                // Atualizar informações do modal
+                modalProductName.textContent = products[productId].name;
+                modalProductPrice.textContent = `${productPrice} MTs • Pagamento via MPESA ou E-MOLA`;
+                
+                // Resetar o modal
+                paymentInstructions.style.display = 'none';
+                buyerName.value = '';
+                buyerPhone.value = '';
+                
+                // Mostrar modal
+                openPaymentModal();
+            });
+        });
+
+        function openPaymentModal() {
+            modalBackdrop.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePaymentModalFn() {
+            modalBackdrop.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        closePaymentModal.addEventListener('click', closePaymentModalFn);
+        modalBackdrop.addEventListener('click', function(e) { 
+            if(e.target === modalBackdrop) closePaymentModalFn(); 
+        });
+
+        // Seleção de método de pagamento
+        chooseMpesa.addEventListener('click', function(){
+            paymentInstructions.style.display = 'block';
+            paymentText.innerHTML = `
+            <strong>MPESA (${MPESA_NUMBER})</strong><br>
+            1) Abra o MPESA e envie <strong>${products[currentProduct].price} MTs</strong> para o número <strong>${MPESA_NUMBER}</strong>.<br>
+            2) No campo referência coloque seu nome.<br>
+            3) Após o pagamento, clique em "Enviar comprovativo no WhatsApp" e envie o screenshot da transferência.
+            `;
+        });
+
+        chooseEmola.addEventListener('click', function(){
+            paymentInstructions.style.display = 'block';
+            paymentText.innerHTML = `
+            <strong>E-MOLA (${EMOLA_NUMBER})</strong><br>
+            1) Abra E-MOLA e envie <strong>${products[currentProduct].price} MTs</strong> para o número <strong>${EMOLA_NUMBER}</strong>.<br>
+            2) No campo referência coloque seu nome.<br>
+            3) Após o pagamento, clique em "Enviar comprovativo no WhatsApp" e envie o screenshot da transferência.
+            `;
+        });
+
+        // Enviar para WhatsApp
+        sendWa.addEventListener('click', function(){
+            const name = encodeURIComponent(buyerName.value || 'Cliente');
+            const phone = encodeURIComponent(buyerPhone.value || '');
+            const product = products[currentProduct].name;
+            const price = products[currentProduct].price;
+            
+            const text = encodeURIComponent(`Olá, eu paguei o e-book: ${product}. Valor: ${price} MTs. Meu nome: ${buyerName.value || ''}. Número para contacto: ${buyerPhone.value || ''}. Envio comprovativo em anexo.`);
+            
+            const url = `https://wa.me/${WHATSAPP_PHONE.replace(/\D/g,'')}?text=${text}`;
+            window.open(url, '_blank');
+        });
+
+        doneBtn.addEventListener('click', function(){
+            alert('Obrigado! Assim que recebermos o comprovativo vamos validar e enviar o material. Você será redirecionado ao WhatsApp para envio do comprovativo.');
+            sendWa.click();
+        });
+
+        // Acessibilidade: fechar modal com Escape
+        document.addEventListener('keydown', function(e){
+            if(e.key === 'Escape' && modalBackdrop.style.display === 'flex') closePaymentModalFn();
+        });
+
+        // Formatação automática do telefone
+        buyerPhone.addEventListener('blur', function(){
+            let v = buyerPhone.value.trim();
+            if(v && !v.startsWith('+')){
+                if(/^8\d{6,9}$/.test(v.replace(/\s/g,''))){
+                    buyerPhone.value = '+258' + v.replace(/\s/g,'');
                 }
-            });
-        });
-        
-        // Add scroll effect to header
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'linear-gradient(135deg, rgba(46, 49, 146, 0.95), rgba(142, 68, 173, 0.95))';
-                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.2)';
-            } else {
-                header.style.background = 'linear-gradient(135deg, rgba(46, 49, 146, 0.9), rgba(142, 68, 173, 0.9))';
-                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
             }
         });
-        
-        // Copy payment numbers functionality
-        document.querySelectorAll('.payment-number').forEach(number => {
-            number.addEventListener('click', function() {
-                const numberToCopy = this.getAttribute('data-number');
-                const notification = this.nextElementSibling.nextElementSibling;
-                
-                // Copy to clipboard
-                navigator.clipboard.writeText(numberToCopy).then(() => {
-                    // Show notification
-                    notification.classList.add('show');
-                    
-                    // Hide notification after 2 seconds
-                    setTimeout(() => {
-                        notification.classList.remove('show');
-                    }, 2000);
-                });
-            });
+
+        // FAQ Toggle 
+        document.querySelectorAll('.faq-question').forEach(question => { 
+            question.addEventListener('click', function() { 
+                const answer = this.nextElementSibling; 
+                const toggle = this.querySelector('.faq-toggle'); 
+                 
+                // Close all other answers 
+                document.querySelectorAll('.faq-answer').forEach(item => { 
+                    if (item !== answer) { 
+                        item.classList.remove('active'); 
+                        item.previousElementSibling.querySelector('.faq-toggle').classList.remove('rotate'); 
+                    } 
+                }); 
+                 
+                // Toggle current answer 
+                answer.classList.toggle('active'); 
+                toggle.classList.toggle('rotate'); 
+            }); 
+        }); 
+         
+        // Smooth scrolling for anchor links 
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => { 
+            anchor.addEventListener('click', function(e) { 
+                e.preventDefault(); 
+                 
+                const targetId = this.getAttribute('href'); 
+                if (targetId === '#') return; 
+                 
+                const targetElement = document.querySelector(targetId); 
+                if (targetElement) { 
+                    window.scrollTo({ 
+                        top: targetElement.offsetTop - 80, 
+                        behavior: 'smooth' 
+                    }); 
+                } 
+            }); 
+        }); 
+         
+        // Add scroll effect to header 
+        window.addEventListener('scroll', function() { 
+            const header = document.querySelector('header'); 
+            if (window.scrollY > 100) { 
+                header.style.background = 'linear-gradient(135deg, rgba(46, 49, 146, 0.95), rgba(142, 68, 173, 0.95))'; 
+                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.2)'; 
+            } else { 
+                header.style.background = 'linear-gradient(135deg, rgba(46, 49, 146, 0.9), rgba(142, 68, 173, 0.9))'; 
+                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)'; 
+            } 
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('nav') && !e.target.closest('.mobile-menu')) {
+                navMenu.classList.remove('active');
+            }
         });
     </script>
 </body>
